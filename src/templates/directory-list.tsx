@@ -1,9 +1,11 @@
 import { Link } from 'waku';
 import { getDirectoryList } from '../lib/directory';
+import { DirectoryItem } from '../components/directory-item.js';
 
-export const DirPage = async () => {
-  const data = await getData();
+export const DirPage = async ({ directories }) => {
+  const data = await getData(directories);
 
+console.log('directories:',directories)
   return (
     <div>
       <title>{data.title}</title>
@@ -13,20 +15,24 @@ export const DirPage = async () => {
         Return home
       </Link>
       <h3 className="text-2xl font-bold tracking-tight mt4">Directory List</h3>
-      {data.directoryList.map((item) => (
-        <div key={item}>
-          
-            {item}
-          
-          </div>
-      ))}
+      <div><Link to={`/dir/${directories.slice(0,-1).join('/')}`}  className="font-bold"    >
+             Zurück
+          </Link></div>
+      <ul>
+        {data.directoryList.map((item) => (
+          <Link to={`/dir/${[...directories,item].join('/')}`}      >
+            <DirectoryItem key={item} item={item} />
+          </Link>
+        ))}
+      </ul>
     </div>
   );
 };
 
-const getData = async () => {
-  const directoryPath = '.';
-  const directoryList = getDirectoryList(directoryPath);
+const getData = async (directories) => {
+  console.log('Directory:', directories);
+  const directoryPath = directories ?? '.';
+  const directoryList = getDirectoryList(directoryPath.join('/'));
   //console.log('Directory List:', directoryList);
 
   const data = {
@@ -38,3 +44,10 @@ const getData = async () => {
 
   return data;
 };
+
+const removeLastElement = (array) => {
+  const newArray = [...array];
+  newArray.pop();
+  return newArray;
+};
+

@@ -26,7 +26,7 @@ export default createPages(async ({ createPage, createLayout }) => {
 
   createPage({
     render: 'dynamic',
-    path: '/dir',
+    path: '/dir/[...directories]',
     component: DirPage,
   });
 });

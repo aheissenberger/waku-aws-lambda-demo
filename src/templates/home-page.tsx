@@ -15,7 +15,7 @@ export const HomePage = async () => {
       <li><Link to="/about" className="mt-4 inline-block underline">
         About
       </Link></li>
-        <li><Link to="/dir" className="mt-4 inline-block underline">
+        <li><Link to="/dir/dist" className="mt-4 inline-block underline">
         Directory RSC (Server Side Rendered)
       </Link></li>
       <li><Link to="/about" className="mt-4 inline-block underline">
