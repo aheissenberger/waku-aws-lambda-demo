@@ -1,0 +1,7 @@
+node_modules
+*.code-workspace
+dist/
+.serverless/cloudformation-template-create-stack.json
+.serverless/cloudformation-template-update-stack.json
+.serverless/serverless-state.json
+.serverless/wakuaws-dev-demo.zip
