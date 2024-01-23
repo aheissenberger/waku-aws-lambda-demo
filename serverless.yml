@@ -5,6 +5,7 @@ configValidationMode: error
 provider:
   name: aws
   runtime: nodejs20.x
+  architecture: arm64
   deploymentMethod: direct
   region: us-east-1 # required for lambda@edge
   stage: ${opt:stage, 'dev'}
