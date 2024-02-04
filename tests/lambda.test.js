@@ -1,7 +1,7 @@
 import { test } from 'node:test'
 import assert from "node:assert"
 
-import { handler } from '../dist/aws/serve.mjs'
+import { handler } from '../dist/serve.js'
 
 // create a cloudfront api gateway event with the url path /about
 const event = (path)=>({
@@ -61,6 +61,9 @@ const context = {
     //getRemainingTimeInMillis: [Function: getRemainingTimeInMillis]
 }
 
+// test('test',t=>{
+//     assert.equal(1,1)
+// })
 
 test('get static page', async t => {
     const response = await handler(event('/about'), context)
